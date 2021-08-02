@@ -1,16 +1,23 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const LifeState = preload("res://LifeState.gd")
+
+const AliveTexture: Texture = preload("res://assets/player.png")
+const GhostTexture: Texture = preload("res://assets/player-ghost.png")
 
 export(float) var speed: float = 100.0
 export(float) var jump_power: float = 500.0
 export(float) var gravity: float = 1200.0
 
 export(bool) var active: bool = false
+export(String, "Alive", "Ghost") var type: String = LifeState.ALIVE
 
 var velocity: Vector2 = Vector2.ZERO
+
+onready var sprite: Sprite = get_node("Sprite")
+
+func _ready():
+    sprite.texture = AliveTexture if type == LifeState.ALIVE else GhostTexture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
