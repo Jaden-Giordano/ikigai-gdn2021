@@ -11,6 +11,9 @@ export(String, "Alive", "Ghost") var type: String = LifeState.ALIVE
 
 var velocity: Vector2 = Vector2.ZERO
 
+onready var Inactive = get_node("State/Inactive")
+onready var Active = get_node("State/Active")
+
 func _ready():
   update_sprite()
 
@@ -31,6 +34,11 @@ func _physics_process(delta):
   if velocity.y < 1000:
     velocity.y += gravity * delta
 
+  if velocity.x < 0:
+    Active.flip_h = true
+  elif velocity.x > 0:
+    Active.flip_h = false
+
   velocity = move_and_slide(velocity, Vector2.UP)
 
 func toggle(death = true):
@@ -40,5 +48,5 @@ func toggle(death = true):
     get_node("SoundDeath").play()
 
 func update_sprite():
-  get_node("State/Inactive").visible = !active
-  get_node("State/Active").visible = active
+  Inactive.visible = !active
+  Active.visible = active
