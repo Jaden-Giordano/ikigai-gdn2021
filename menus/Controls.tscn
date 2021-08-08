@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://menus/Controls.gd" type="Script" id=1]
+
+[node name="Controls" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 250.0
+margin_top = 100.0
+margin_right = -250.0
+margin_bottom = -100.0
+custom_constants/separation = 20
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_top = 82.0
+margin_right = 524.0
+margin_bottom = 277.0
+text = "You're stuck in your dreams! You have 9 lives to get to the end of each dream, however, you cant exactly die in your dreams. You must work with your spirit self to get your physical form to the portal.
+
+Movement: WASD/Arrow keys
+
+Jump: Space
+
+Menu/Pause: Escape
+
+Credits:
+Music - Will (FuraModa)
+Programming: Jaden (Grey)"
+fit_content_height = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 297.0
+margin_right = 524.0
+margin_bottom = 317.0
+alignment = 1
+
+[node name="Back" type="Button" parent="HBoxContainer"]
+margin_left = 212.0
+margin_right = 312.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Back to menu"
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_back"]

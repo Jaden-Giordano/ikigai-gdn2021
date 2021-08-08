@@ -14,3 +14,4 @@ script = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, -50 )
 [connection signal="player_entered" from="Portal" to="." method="_on_portal_entered"]
+[connection signal="death" from="Player" to="." method="_on_death"]
