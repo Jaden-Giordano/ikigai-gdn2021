@@ -1,7 +1,6 @@
 extends Area2D
 
 const Playable = preload("res://Playable.gd")
-const LifeState = preload("res://LifeState.gd")
 
 signal player_entered
 

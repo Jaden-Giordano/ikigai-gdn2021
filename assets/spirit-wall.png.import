@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player-ghost.png-13cae06233e21d0147f1fff79eac1694.stex"
+path="res://.import/spirit-wall.png-83918c6e17654d6fafb26464b10ec37c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player-ghost.png"
-dest_files=[ "res://.import/player-ghost.png-13cae06233e21d0147f1fff79eac1694.stex" ]
+source_file="res://assets/spirit-wall.png"
+dest_files=[ "res://.import/spirit-wall.png-83918c6e17654d6fafb26464b10ec37c.stex" ]
 
 [params]
 

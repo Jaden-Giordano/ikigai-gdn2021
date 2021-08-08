@@ -1,23 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://LifeState.gd" type="Script" id=1]
-[ext_resource path="res://Playable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Physical.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://Camera.gd" type="Script" id=4]
+[ext_resource path="res://Spirit.tscn" type="PackedScene" id=5]
 
 [node name="Player" type="Node2D"]
+z_index = 1
 script = ExtResource( 3 )
 
 [node name="LifeState" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="Ghost" parent="LifeState" instance=ExtResource( 2 )]
-collision_layer = 2
-collision_mask = 2
-type = "Ghost"
-
 [node name="Alive" parent="LifeState" instance=ExtResource( 2 )]
 active = true
+
+[node name="Ghost" parent="LifeState" instance=ExtResource( 5 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

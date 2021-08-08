@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Floor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/2.png" type="Texture" id=3]
 [ext_resource path="res://assets/3.png" type="Texture" id=4]
 [ext_resource path="res://assets/1.png" type="Texture" id=5]
+[ext_resource path="res://Trap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SpiritButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Wall.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Rift.tscn" type="PackedScene" id=9]
 
 [node name="LevelOne" instance=ExtResource( 2 )]
 
@@ -31,7 +35,31 @@ texture = ExtResource( 4 )
 
 [node name="Floor" parent="." index="1" instance=ExtResource( 1 )]
 position = Vector2( 220.45, 5.54248 )
-scale = Vector2( 40.6, 1 )
+scale = Vector2( 98.28, 1 )
 
 [node name="Portal" parent="." index="2"]
 position = Vector2( 452.51, -20.69 )
+
+[node name="Trap" parent="." index="4" instance=ExtResource( 6 )]
+position = Vector2( 85.6853, -2.4497 )
+
+[node name="Wall" parent="." index="5" instance=ExtResource( 8 )]
+position = Vector2( 116.505, -82.3705 )
+scale = Vector2( 1, 10 )
+
+[node name="SpiritButton" parent="." index="6" instance=ExtResource( 7 )]
+position = Vector2( 259.694, -2.46735 )
+
+[node name="Rift" parent="." index="7" instance=ExtResource( 9 )]
+position = Vector2( -78.1911, -21.5132 )
+
+[node name="Floor2" parent="." index="8" instance=ExtResource( 1 )]
+position = Vector2( -335.539, -90.953 )
+scale = Vector2( 1, 11.92 )
+
+[node name="Floor3" parent="." index="9" instance=ExtResource( 1 )]
+position = Vector2( 627.124, -90.9529 )
+scale = Vector2( 1, 12.32 )
+[connection signal="playable_touched" from="Trap" to="Player" method="kill"]
+[connection signal="pressed" from="SpiritButton" to="Wall" method="destroy"]
+[connection signal="entered" from="Rift" to="Player" method="toggle"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/dreamscape-2.ogg-961d41a2c5380b85fae102ac606d4651.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/dreamscape-2.ogg"
+dest_files=[ "res://.import/dreamscape-2.ogg-961d41a2c5380b85fae102ac606d4651.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

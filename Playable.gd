@@ -2,9 +2,6 @@ extends KinematicBody2D
 
 const LifeState = preload("res://LifeState.gd")
 
-const AliveTexture: Texture = preload("res://assets/player.png")
-const GhostTexture: Texture = preload("res://assets/player-ghost.png")
-
 export(float) var speed: float = 100.0
 export(float) var jump_power: float = 500.0
 export(float) var gravity: float = 1200.0
@@ -14,10 +11,8 @@ export(String, "Alive", "Ghost") var type: String = LifeState.ALIVE
 
 var velocity: Vector2 = Vector2.ZERO
 
-onready var sprite: Sprite = get_node("Sprite")
-
 func _ready():
-    sprite.texture = AliveTexture if type == LifeState.ALIVE else GhostTexture
+  update_sprite()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -37,3 +32,11 @@ func _physics_process(delta):
     velocity.y += gravity * delta
 
   velocity = move_and_slide(velocity, Vector2.UP)
+
+func toggle():
+  active = !active
+  update_sprite()
+
+func update_sprite():
+  get_node("State/Inactive").visible = !active
+  get_node("State/Active").visible = active
