@@ -33,9 +33,11 @@ func _physics_process(delta):
 
   velocity = move_and_slide(velocity, Vector2.UP)
 
-func toggle():
+func toggle(death = true):
   active = !active
   update_sprite()
+  if !active and death:
+    get_node("SoundDeath").play()
 
 func update_sprite():
   get_node("State/Inactive").visible = !active

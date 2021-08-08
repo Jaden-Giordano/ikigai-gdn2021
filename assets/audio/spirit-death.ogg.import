@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/spirit-death.ogg-e22ca74df0b6b380737b7b87d5c1cbff.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/spirit-death.ogg"
+dest_files=[ "res://.import/spirit-death.ogg-e22ca74df0b6b380737b7b87d5c1cbff.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

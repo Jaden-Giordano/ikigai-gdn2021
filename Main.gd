@@ -6,10 +6,10 @@ const GameMenu = preload("res://menus/GameMenu.tscn")
 const Controls = preload("res://menus/Controls.tscn")
 const LivesCounter = preload("res://menus/LivesCounter.tscn")
 const GameOver = preload("res://menus/GameOver.tscn")
+const LevelComplete = preload("res://menus/LevelComplete.tscn")
 
 onready var levels = get_node("Levels");
 onready var ui = get_node("UI")
-onready var audio = get_node("Audio")
 
 var playing = false
 var ingame_menu = null
@@ -18,11 +18,13 @@ var menu_bg = null
 var controls = null
 var lives_counter = null
 var game_over = null
+var level_complete = null
 
 func _ready():
   spawn_main_menu()
   menu_bg = MenuBG.instance()
   ui.add_child(menu_bg)
+  Audio.play_bgm("MenuMusic")
 
 func _process(delta):
   if playing and Input.is_action_just_pressed("menu") and !ingame_menu:
@@ -41,6 +43,7 @@ func destroy_main_menu():
     main_menu = null
 
 func spawn_menu():
+  Audio.fade_out_current()
   ingame_menu = GameMenu.instance()
   ingame_menu.connect("resume_clicked", self, "_on_resume")
   ingame_menu.connect("quit_clicked", self, "_on_quit")
@@ -49,13 +52,15 @@ func spawn_menu():
 
 func _on_resume():
   if ingame_menu:
-    audio.play("menu_select")
+    Audio.play("MenuSelect")
     ingame_menu.queue_free()
     ingame_menu = null
     get_tree().paused = false;
+    Audio.fade_in_current()
 
 func _on_play():
-  audio.play("menu_select")
+  Audio.play("MenuSelect")
+  Audio.fade_in("BackgroundMusic")
   destroy_main_menu()
   menu_bg.queue_free()
   menu_bg = null
@@ -65,14 +70,14 @@ func _on_play():
   playing = true
 
 func _on_controls():
-  audio.play("menu_select")
+  Audio.play("MenuSelect")
   destroy_main_menu()
   controls = Controls.instance()
   controls.connect("back_clicked", self, "_on_back_to_main")
   ui.add_child(controls)
 
 func _on_back_to_main():
-  audio.play("menu_select")
+  Audio.play("MenuSelect")
   controls.queue_free()
   controls = null
   spawn_main_menu()
@@ -86,7 +91,7 @@ func _on_restart():
 
 func _on_quit():
   print("AAAA")
-  audio.play("menu_select")
+  Audio.play("MenuSelect")
   get_tree().quit()
 
 func _on_lives_update(new_lives):
@@ -99,3 +104,19 @@ func _on_lives_update(new_lives):
     ui.add_child(game_over)
   else:
     lives_counter.set_lives(new_lives)
+
+func _on_level_complete():
+  playing = false
+  get_tree().paused = true
+  level_complete = LevelComplete.instance()
+  level_complete.connect("continue_clicked", self, "_on_continue")
+  level_complete.connect("quit_clicked", self, "_on_quit")
+  ui.add_child(level_complete)
+
+func _on_continue():
+  Audio.play("MenuSelect")
+  levels.next_level()
+  level_complete.queue_free()
+  level_complete = null
+  playing = true
+  get_tree().paused = false

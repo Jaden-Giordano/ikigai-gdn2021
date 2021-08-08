@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Playable.gd" type="Script" id=1]
 [ext_resource path="res://assets/physical.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/physical-death.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -20,3 +21,6 @@ texture = ExtResource( 2 )
 
 [node name="Inactive" type="Sprite" parent="State"]
 texture = ExtResource( 2 )
+
+[node name="SoundDeath" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

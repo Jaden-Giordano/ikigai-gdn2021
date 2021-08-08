@@ -10,8 +10,8 @@ export(int) var lives = 9
 func kill():
   lives -= 1
   emit_signal("death", lives)
-  toggle()
+  toggle(true)
 
-func toggle():
-  life_state.toggle()
+func toggle(death = false):
+  life_state.toggle(death)
   camera.update_focus()

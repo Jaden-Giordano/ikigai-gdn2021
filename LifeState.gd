@@ -11,10 +11,10 @@ onready var states = {
   GHOST: get_node("Ghost"),
 }
 
-func toggle():
-  states[current_state].toggle();
+func toggle(death = false):
+  states[current_state].toggle(death);
   current_state = GHOST if current_state == ALIVE else ALIVE
-  states[current_state].toggle();
+  states[current_state].toggle(death);
 
 func get_current():
   return states[current_state]
