@@ -33,6 +33,5 @@ bus = "BGM"
 stream = ExtResource( 4 )
 volume_db = 1.0
 bus = "BGM"
-
 [connection signal="level_complete" from="Levels" to="." method="_on_level_complete"]
 [connection signal="lives_update" from="Levels" to="." method="_on_lives_update"]
