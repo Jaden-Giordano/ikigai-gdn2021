@@ -140,7 +140,7 @@ func _on_continue():
   levels.next_level()
   level_complete.queue_free()
   level_complete = null
-  pause()
+  unpause()
 
 func _on_return_to_main():
   Audio.play("MenuSelect")

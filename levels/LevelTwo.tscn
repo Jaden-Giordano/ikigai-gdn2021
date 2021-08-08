@@ -74,7 +74,6 @@ position = Vector2( 528.579, -85.5556 )
 
 [node name="Rift" parent="." index="18" instance=ExtResource( 8 )]
 position = Vector2( -88.8052, -18.7017 )
-
 [connection signal="playable_touched" from="Trap" to="Player" method="kill"]
 [connection signal="playable_touched" from="Trap2" to="Player" method="kill"]
 [connection signal="pressed" from="PhysicalButton" to="SpiritWall" method="destroy"]
