@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Burr"
+config/name="Ikigai"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/physical-inactive.png"
 
 [audio]
 
