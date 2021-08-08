@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://menus/SoundMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds.png" type="Texture" id=2]
+[ext_resource path="res://assets/music.png" type="Texture" id=3]
+[ext_resource path="res://assets/sounds-mute.png" type="Texture" id=4]
+[ext_resource path="res://assets/music-mute.png" type="Texture" id=5]
+
+[node name="SoundMenu" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 16.0
+custom_constants/separation = 8
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+music_enabled = ExtResource( 3 )
+music_disabled = ExtResource( 5 )
+fx_enabled = ExtResource( 2 )
+fx_disabled = ExtResource( 4 )
+
+[node name="FX" type="TextureButton" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 2 )
+
+[node name="Music" type="TextureButton" parent="."]
+margin_left = 24.0
+margin_right = 40.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 3 )
+[connection signal="pressed" from="FX" to="." method="_on_fx_toggle"]
+[connection signal="pressed" from="Music" to="." method="_on_music_toggle"]

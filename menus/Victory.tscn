@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://menus/Victory.gd" type="Script" id=1]
+
+[node name="Victory" type="HBoxContainer"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 419.0
+margin_right = 605.0
+margin_bottom = 70.0
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 186.0
+margin_bottom = 14.0
+text = "You did it! Thanks for playing!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 22.0
+margin_right = 186.0
+margin_bottom = 42.0
+alignment = 1
+
+[node name="Return" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 37.0
+margin_right = 149.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Return to menu"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 50.0
+margin_right = 186.0
+margin_bottom = 70.0
+alignment = 1
+
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 73.0
+margin_right = 113.0
+margin_bottom = 20.0
+size_flags_horizontal = 0
+text = "Quit"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Return" to="." method="_on_return"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/Quit" to="." method="_on_quit"]
