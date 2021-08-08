@@ -46,15 +46,20 @@ func spawn_menu():
   Audio.fade_out_current()
   ingame_menu = GameMenu.instance()
   ingame_menu.connect("resume_clicked", self, "_on_resume")
+  ingame_menu.connect("restart_clicked", self, "_on_restart")
   ingame_menu.connect("quit_clicked", self, "_on_quit")
   ui.add_child(ingame_menu)
   get_tree().paused = true;
 
+func destroy_ingame_menu():
+  if ingame_menu:
+    ingame_menu.queue_free()
+    ingame_menu = null
+
 func _on_resume():
   if ingame_menu:
     Audio.play("MenuSelect")
-    ingame_menu.queue_free()
-    ingame_menu = null
+    destroy_ingame_menu()
     get_tree().paused = false;
     Audio.fade_in_current()
 
@@ -83,8 +88,10 @@ func _on_back_to_main():
   spawn_main_menu()
 
 func _on_restart():
-  game_over.queue_free()
-  game_over = null
+  if game_over:
+    game_over.queue_free()
+    game_over = null
+  destroy_ingame_menu()
   levels.restart()
   playing = true
   get_tree().paused = false
