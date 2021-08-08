@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Floor.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://SpiritWall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://SpiritButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SpiritTrap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Rift.tscn" type="PackedScene" id=9]
 
 [node name="LevelThree" instance=ExtResource( 1 )]
 
@@ -115,6 +116,9 @@ scale = Vector2( 1, 17.08 )
 [node name="Floor7" parent="." index="30" instance=ExtResource( 2 )]
 position = Vector2( -258.568, 142.236 )
 scale = Vector2( 1, 16.6 )
+
+[node name="Rift" parent="." index="31" instance=ExtResource( 9 )]
+position = Vector2( -293.619, -7.79427 )
 [connection signal="playable_touched" from="Trap" to="Player" method="kill"]
 [connection signal="playable_touched" from="Trap4" to="Player" method="kill"]
 [connection signal="playable_touched" from="Trap5" to="Player" method="kill"]
@@ -129,3 +133,4 @@ scale = Vector2( 1, 16.6 )
 [connection signal="playable_touched" from="SpiritTrap2" to="Player" method="kill"]
 [connection signal="playable_touched" from="SpiritTrap3" to="Player" method="kill"]
 [connection signal="playable_touched" from="SpiritTrap4" to="Player" method="kill"]
+[connection signal="entered" from="Rift" to="Player" method="toggle"]

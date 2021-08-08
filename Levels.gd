@@ -2,6 +2,7 @@ extends Node2D
 
 signal lives_update
 signal level_complete
+signal victory
 
 export(Array, PackedScene) var scenes
 
@@ -14,11 +15,14 @@ func start():
 func restart():
   start_scene(current_scene_index)
 
+func clear():
+  if current_scene:
+    current_scene.queue_free()
+    current_scene_index = 0
+
 func next_level():
   if current_scene_index + 1 < scenes.size():
     start_scene(current_scene_index + 1)
-  else:
-    print("FINSIHED")
 
 func start_scene(index: int):
   if current_scene:
@@ -33,7 +37,10 @@ func start_scene(index: int):
   current_scene_index = index
 
 func _on_level_complete():
-  emit_signal("level_complete")
+  if current_scene_index + 1 >= scenes.size():
+    emit_signal("victory")
+  else:
+    emit_signal("level_complete")
 
 func _on_death(lives):
   emit_signal("lives_update", lives)
