@@ -5,8 +5,8 @@
 [ext_resource path="res://assets/audio/physical-death.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/physical-inactive.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5, 8 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 8.0
 
 [node name="Playable" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
